@@ -1,0 +1,32 @@
+def msg_encrypt(text, s):
+    E_text = ""
+    for char in text:
+        if char.isalpha():  # Check if the character is a letter
+            shift_base = ord('A') if char.isupper() else ord('a')
+            # Shift the character and wrap around the alphabet
+            E_char = chr((ord(char) - shift_base + s) % 26 + shift_base)
+            E_text += E_char
+        else:
+            E_text += char  # Non-alphabetical characters are unchanged
+    return E_text
+
+def msg_decrypt(text, s):
+    return msg_encrypt(text, -s)  # Decrypting is just encrypting with negative shift
+
+def main():
+    print("Caesar Cipher Program")
+    
+    # Input message and shift value
+    message = input("Enter the message: ")
+    s = int(input("Enter the shift value (+ve for encryption, -ve for decryption): "))
+    
+    # Encrypt the message
+    E_message = msg_encrypt(message, s)
+    print(f"Encrypted Message: {E_message}")
+    
+    # Decrypt the message
+    D_message = msg_decrypt(E_message, s)
+    print(f"Decrypted Message: {D_message}")
+
+if __name__ == "__main__":
+    main()
