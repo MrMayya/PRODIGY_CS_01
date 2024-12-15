@@ -14,7 +14,7 @@ def msg_decrypt(text, s):
     return msg_encrypt(text, -s)  # Decrypting is just encrypting with negative shift
 
 def main():
-    print("Caesar Cipher Program")
+    print("Text Encryption Program")
     
     # Input message and shift value
     message = input("Enter the message: ")
