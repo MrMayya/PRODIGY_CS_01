@@ -1,0 +1,49 @@
+#Python Program to check Password Strength
+def assess_password_strength(password):
+    import re
+
+    # Criteria for password strength
+    length_criteria = len(password) >= 8
+    uppercase_criteria = bool(re.search(r'[A-Z]', password))
+    lowercase_criteria = bool(re.search(r'[a-z]', password))
+    number_criteria = bool(re.search(r'\d', password))
+    special_char_criteria = bool(re.search(r'[!@#$%^&*(),.?":{}|<>]', password))
+
+    # Assessing password strength
+    score = sum([length_criteria, uppercase_criteria, lowercase_criteria, number_criteria, special_char_criteria])
+
+   
+    feedback = []
+    if not length_criteria:
+        feedback.append("Password should be at least 8 characters long.")
+    if not uppercase_criteria:
+        feedback.append("Password should include at least one uppercase letter.")
+    if not lowercase_criteria:
+        feedback.append("Password should include at least one lowercase letter.")
+    if not number_criteria:
+        feedback.append("Password should include at least one numeric digit.")
+    if not special_char_criteria:
+        feedback.append("Password should include at least one special character (!@#$%^&*(),.?\":{}|<>).")
+
+    # Strength categories
+    strength = ""
+    if score == 5:
+        strength = "Strong"
+    elif score >= 3:
+        strength = "Moderate"
+    else:
+        strength = "Weak"
+
+    return {
+        "strength": strength,
+        "feedback": feedback
+    }
+
+
+password = input("Enter a password to assess: ")
+result = assess_password_strength(password)
+print(f"Password Strength: {result['strength']}")
+if result['feedback']:
+    print("Feedback:")
+    for tip in result['feedback']:
+        print(f"- {tip}")
