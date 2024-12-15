@@ -1,0 +1,53 @@
+#Image manipulation tool
+
+from PIL import Image
+import numpy as np
+def encrypt_image(image_path, key):
+    # Open the image and convert it to RGB
+    img = Image.open(image_path)
+    img = img.convert('RGB')
+    
+    # Convert image to numpy array
+    data = np.array(img)
+    
+    # Apply XOR operation with the key on each pixel
+    encrypted_data = data ^ key
+    
+    
+    encrypted_image = Image.fromarray(encrypted_data)
+    
+    return encrypted_image
+
+def decrypt_image(encrypted_image, key):
+    
+    encrypted_data = np.array(encrypted_image)
+    
+   
+    decrypted_data = encrypted_data ^ key
+    
+    
+    decrypted_image = Image.fromarray(decrypted_data)
+    
+    return decrypted_image
+def main():
+    choice = input("Do you want to encrypt(e) or decrypt(d) an image? ")
+    
+    if choice.lower() == 'e':
+        image_path = input("Enter the path of the image to encrypt: ")
+        key = int(input("Enter a numeric key (0-255): "))  # Key should be between 0-255
+        
+        encrypted_image = encrypt_image(image_path, key)
+        encrypted_image.save('encrypted_image.png')
+        print("Image encrypted and saved as 'encrypted_image.png'")
+        
+    elif choice.lower() == 'd':
+        encrypted_image_path = input("Enter the path of the encrypted image: ")
+        key = int(input("Enter the numeric key used for encryption (0-255): "))
+        
+        encrypted_image = Image.open(encrypted_image_path)
+        decrypted_image = decrypt_image(encrypted_image, key)
+        decrypted_image.save('decrypted_image.png')
+        print("Image decrypted and saved as 'decrypted_image.png'")
+        
+if __name__ == "__main__":
+    main()
