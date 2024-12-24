@@ -3,7 +3,7 @@ def msg_encrypt(text, s):
     for char in text:
         if char.isalpha():  # Check if the character is a letter
             shift_base = ord('A') if char.isupper() else ord('a')
-            # Shift the character and wrap around the alphabet
+            
             E_char = chr((ord(char) - shift_base + s) % 26 + shift_base)
             E_text += E_char
         else:
