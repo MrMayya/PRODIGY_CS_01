@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RarePeti Atelier | Boutique Pet Cuisine</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Raleway:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-wrapper">
+      <header class="top-nav">
+        <div class="brand">
+          <span class="brand-mark">RP</span>
+          <span class="brand-name">RarePeti Atelier</span>
+        </div>
+        <nav class="nav-links">
+          <a href="#products">Collection</a>
+          <a href="#videos">Behind the Scenes</a>
+          <a href="#quotes">Philosophy</a>
+          <a href="#create">Create</a>
+        </nav>
+        <div class="nav-cta">
+          <button id="ctaButton" class="btn btn-outline">Reserve a Tasting</button>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div class="hero-content">
+            <p class="hero-eyebrow">Boutique Gastronomy for Cherished Companions</p>
+            <h1>Elevate every bowl with artisanal recipes and luminous care.</h1>
+            <p class="hero-copy">
+              RarePeti is a celebration of slow-crafted cuisine, sustainable sourcing, and
+              heartwarming moments shared between you and your pet.
+            </p>
+            <div class="hero-actions">
+              <button class="btn btn-primary" id="exploreCollection">Explore the Collection</button>
+              <button class="btn btn-ghost" id="watchKitchen">Watch our Kitchen</button>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <div class="hero-card">
+              <div class="hero-card__badge">Small Batch</div>
+              <img
+                src="https://images.unsplash.com/photo-1548943487-a2e4e43b4853"
+                alt="Gourmet pet cuisine"
+              />
+              <div class="hero-card__footer">
+                <p>Every plate arrives with a promise of purity and delight.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="products" class="section products-section">
+          <div class="section-heading">
+            <h2>Signature Collection</h2>
+            <p>
+              Thoughtfully curated menus designed by culinary artisans with nutritionists to
+              balance every bite.
+            </p>
+          </div>
+          <div id="productGrid" class="product-grid" aria-live="polite"></div>
+        </section>
+
+        <section id="videos" class="section videos-section">
+          <div class="section-heading">
+            <h2>Inside the Atelier</h2>
+            <p>Step into our kitchen to see how patience, technique, and joy craft each meal.</p>
+          </div>
+          <div id="videoGallery" class="video-gallery" aria-live="polite"></div>
+        </section>
+
+        <section id="quotes" class="section quotes-section">
+          <div class="section-heading">
+            <h2>Moments &amp; Mottos</h2>
+            <p>Words that guide our artistry and resonate with the RarePeti community.</p>
+          </div>
+          <div class="quote-carousel" role="region" aria-live="polite">
+            <div id="quoteText" class="quote-text">"Every meal is an embrace in a bowl."</div>
+            <div id="quoteAuthor" class="quote-author">— RarePeti Atelier</div>
+            <div class="carousel-controls">
+              <button class="carousel-btn" id="prevQuote" aria-label="Previous quote">‹</button>
+              <button class="carousel-btn" id="nextQuote" aria-label="Next quote">›</button>
+            </div>
+          </div>
+        </section>
+
+        <section id="create" class="section create-section">
+          <div class="section-heading">
+            <h2>Curate Your Boutique</h2>
+            <p>
+              Add new creations, showcase preparation videos, and share the sentiments that keep
+              customers inspired.
+            </p>
+          </div>
+          <div class="create-panels">
+            <div class="panel">
+              <h3>Add a Product</h3>
+              <form id="productForm" class="form-grid">
+                <label>
+                  Name
+                  <input type="text" name="name" placeholder="Velvet Dawn Stew" required />
+                </label>
+                <label>
+                  Description
+                  <textarea name="description" rows="3" placeholder="Describe the experience" required></textarea>
+                </label>
+                <label>
+                  Price (USD)
+                  <input type="number" name="price" min="0" step="0.01" required />
+                </label>
+                <label>
+                  Category
+                  <input type="text" name="category" placeholder="Signature Meals" />
+                </label>
+                <label>
+                  Image URL
+                  <input type="url" name="image_url" placeholder="https://" />
+                </label>
+                <label class="checkbox">
+                  <input type="checkbox" name="available" checked /> Available now
+                </label>
+                <button type="submit" class="btn btn-primary">Add Product</button>
+              </form>
+            </div>
+            <div class="panel">
+              <h3>Showcase a Video</h3>
+              <form id="videoForm" class="form-grid">
+                <label>
+                  Title
+                  <input type="text" name="title" placeholder="Inside the Tasting Room" required />
+                </label>
+                <label>
+                  Video URL (YouTube or Vimeo)
+                  <input type="url" name="url" placeholder="https://" required />
+                </label>
+                <label>
+                  Description
+                  <textarea name="description" rows="3" placeholder="Share the story behind the video"></textarea>
+                </label>
+                <label>
+                  Attach to Product (optional)
+                  <select name="product_id" id="videoProductSelect">
+                    <option value="">No attachment</option>
+                  </select>
+                </label>
+                <button type="submit" class="btn btn-primary">Add Video</button>
+              </form>
+            </div>
+            <div class="panel">
+              <h3>Inspire with a Quote</h3>
+              <form id="quoteForm" class="form-grid">
+                <label>
+                  Quote
+                  <textarea name="text" rows="3" placeholder="Share your guiding philosophy" required></textarea>
+                </label>
+                <label>
+                  Author or Source
+                  <input type="text" name="author" placeholder="Maison RarePeti" />
+                </label>
+                <button type="submit" class="btn btn-primary">Add Quote</button>
+              </form>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="footer-content">
+          <div>
+            <h4>RarePeti Atelier</h4>
+            <p>Handcrafted nourishment for companions who deserve the extraordinary.</p>
+          </div>
+          <div>
+            <h4>Visit the Salon</h4>
+            <p>12 Rue Lumière, Culinary District</p>
+            <p><a href="mailto:bonjour@rarepetiatelier.com">bonjour@rarepetiatelier.com</a></p>
+          </div>
+          <div>
+            <h4>Stay Inspired</h4>
+            <p>Follow our weekly tasting notes and behind-the-scenes moments.</p>
+            <div class="socials">
+              <a href="#" aria-label="Instagram">Instagram</a>
+              <a href="#" aria-label="Pinterest">Pinterest</a>
+              <a href="#" aria-label="YouTube">YouTube</a>
+            </div>
+          </div>
+        </div>
+        <p class="footer-note">© <span id="year"></span> RarePeti Atelier. Crafted with devotion.</p>
+      </footer>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
